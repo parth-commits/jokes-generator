@@ -40,7 +40,8 @@
                 android:id="@+id/setup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="45dp"
+                android:layout_marginRight="20dp"
+                android:textSize="40dp"
                 android:textAlignment="viewStart"
                 android:fontFamily="sans-serif-black"
                 android:paddingTop="14dp"
@@ -52,17 +53,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Because he had no body to go with!"
-                android:textSize="35dp"
+                android:textSize="25dp"
                 android:textAlignment="viewEnd"
-                android:fontFamily="sans-serif-black"
-                android:paddingTop="40dp"
+                android:fontFamily="sans-serif-light"
+                android:paddingTop="20dp"
                 android:gravity="end" />
 
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="520dp"
+            android:paddingTop="475dp"
             android:textAlignment="center"
             android:fontFamily="sans-serif-black"
             android:textSize="30sp"
@@ -74,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="550dp"
+            android:layout_marginTop="500dp"
             android:orientation="vertical">
 
             <TextView
@@ -119,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="550dp"
+            android:layout_marginTop="500dp"
             android:orientation="vertical">
 
             <TextView
