@@ -2,177 +2,194 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:padding="16dp">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:padding="16dp"
-        >
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAppearance="?android:textAppearanceMedium" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+    <ProgressBar
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
+    <ImageView
+        android:id="@+id/nonet"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/nonet"
+        android:visibility="gone" />
 
-            <LinearLayout
-                android:id="@+id/main-joke-page"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_alignParentTop="true">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CATEGORY:"
-
-                    />
-
-                <TextView
-                    android:id="@+id/category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="32sp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="PUN"
-                    />
-
-                <TextView
-                    android:id="@+id/setup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:textSize="40dp"
-                    android:textAlignment="viewStart"
-                    android:fontFamily="sans-serif-black"
-                    android:paddingTop="14dp"
-                    android:text="Why couldn't the skeleton go to the Christmas party?"
-                    android:gravity="start" />
-
-                <TextView
-                    android:id="@+id/delivery"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Because he had no body to go with!"
-                    android:textSize="25dp"
-                    android:textAlignment="viewEnd"
-                    android:fontFamily="sans-serif-light"
-                    android:paddingTop="20dp"
-                    android:gravity="end" />
-
-            </LinearLayout>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="475dp"
-                android:textAlignment="center"
-                android:fontFamily="sans-serif-black"
-                android:textSize="30sp"
-                android:text="FLAGS"
-                android:gravity="center_horizontal" />
-
-            <LinearLayout
-                android:id="@+id/leftflags"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="500dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/nsfw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="NSFW"
-                    android:fontFamily="sans-serif-medium"
-                    android:textSize="25sp"
-                    android:textAllCaps="true"
-                    android:textColor="@color/green"
-                    />
-                <TextView
-                    android:id="@+id/religious"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="14dp"
-                    android:text="religious"
-                    android:fontFamily="sans-serif-medium"
-                    android:textSize="25sp"
-                    android:textAllCaps="true"
-                    android:textColor="@color/green"
-                    />
-
-                <TextView
-                    android:id="@+id/political"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="14dp"
-                    android:text="political"
-                    android:fontFamily="sans-serif-medium"
-                    android:textSize="25sp"
-                    android:textAllCaps="true"
-                    android:textColor="@color/green"
-                    />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="500dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/racist"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
-                    android:text="racist"
-                    android:fontFamily="sans-serif-medium"
-                    android:textSize="25sp"
-                    android:textAllCaps="true"
-                    android:textColor="@color/green"
-                    android:gravity="end" />
-                <TextView
-                    android:id="@+id/sexist"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
-                    android:paddingTop="14dp"
-                    android:text="sexist"
-                    android:fontFamily="sans-serif-medium"
-                    android:textSize="25sp"
-                    android:textAllCaps="true"
-                    android:textColor="@color/green"
-                    android:gravity="end" />
-
-                <TextView
-                    android:id="@+id/explicit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
-                    android:paddingTop="14dp"
-                    android:text="explicit"
-                    android:fontFamily="sans-serif-medium"
-                    android:textSize="25sp"
-                    android:textAllCaps="true"
-                    android:textColor="@color/green"
-                    android:gravity="end" />
-            </LinearLayout>
-
-
-        </RelativeLayout>
-    </ScrollView>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/swiperefresh"/>
+        android:layout_height="wrap_content">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:id="@+id/main-joke-page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CATEGORY:"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="PUN"
+                        android:textSize="32sp" />
+
+                    <TextView
+                        android:id="@+id/setup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="start"
+                        android:paddingTop="14dp"
+                        android:text="Why couldn't the skeleton go to the Christmas party?"
+                        android:textAlignment="viewStart"
+                        android:textSize="40dp" />
+
+                    <TextView
+                        android:id="@+id/delivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:paddingTop="20dp"
+                        android:text="Because he had no body to go with!"
+                        android:textAlignment="viewEnd"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="475dp"
+                    android:text="FLAGS"
+                    android:textAlignment="center"
+                    android:textSize="30sp" />
+
+                <LinearLayout
+                    android:id="@+id/leftflags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="500dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nsfw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="NSFW"
+                        android:textAllCaps="true"
+                        android:textColor="@color/green"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/religious"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:paddingTop="14dp"
+                        android:text="religious"
+                        android:textAllCaps="true"
+                        android:textColor="@color/green"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/political"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:paddingTop="14dp"
+                        android:text="political"
+                        android:textAllCaps="true"
+                        android:textColor="@color/green"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="500dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/racist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="end"
+                        android:text="racist"
+                        android:textAlignment="textEnd"
+                        android:textAllCaps="true"
+                        android:textColor="@color/green"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/sexist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="end"
+                        android:paddingTop="14dp"
+                        android:text="sexist"
+                        android:textAlignment="textEnd"
+                        android:textAllCaps="true"
+                        android:textColor="@color/green"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/explicit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="end"
+                        android:paddingTop="14dp"
+                        android:text="explicit"
+                        android:textAlignment="textEnd"
+                        android:textAllCaps="true"
+                        android:textColor="@color/green"
+                        android:textSize="25sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </RelativeLayout>
