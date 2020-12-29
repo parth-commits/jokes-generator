@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Jokes Generator</string>
     <!-- Text to display in the list when there are no earthquakes [CHAR LIMIT=NONE] -->
-    <string name="no_earthquakes">No COVID-19 data found.</string>
+    <string name="no_joke">No Joke data found.</string>
     <!-- Text to display in the list when there are no earthquakes [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">\t\t\t\t\t\tNo internet Connection \nConnect to internet and try again.</string>
     <string name="last_update">Last updated:\ \ </string>
