@@ -2,6 +2,7 @@ package com.example.android.jokesgenerator;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 //import androidx.loader.app.LoaderManager.LoaderCallbacks;
@@ -15,10 +16,12 @@ import android.content.Loader;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -26,7 +29,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<Joke> {
 
     public static final String LOG_TAG = MainActivity.class.getName();
-    private String mUrl = "https://v2.jokeapi.dev/joke/Any?type=twopart";
+    private String mUrl = "https://official-joke-api.appspot.com/random_joke";
     private TextView mEmptyStateTextView;
     private ImageView mNoNet;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -34,8 +37,9 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<J
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+
+        setContentView(R.layout.activity_main);
         swipeRefreshLayout = findViewById(R.id.swiperefresh);
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
 
@@ -54,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<J
             // Get a reference to the LoaderManager, in order to interact with loaders.
             LoaderManager loaderManager = getLoaderManager();
 
+
+            ScrollView scrollView = findViewById(R.id.mainscrollview);
+            scrollView.setVisibility(View.VISIBLE);
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
@@ -61,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<J
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
+            ScrollView scrollView = findViewById(R.id.mainscrollview);
+            scrollView.setVisibility(View.GONE);
             View loadingIndicator = findViewById(R.id.loading_indicator);
             loadingIndicator.setVisibility(View.GONE);
             mNoNet.setVisibility(View.VISIBLE);
@@ -68,13 +77,15 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<J
             // Update empty state with no connection error message
         }
 
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
-
+                Intent intent = new Intent( MainActivity.this, redirect.class);
+                // Send the intent to launch a new activity
+                startActivity(intent);
                 //your code on swipe refresh
-                ConnectivityManager connMgr = (ConnectivityManager)
+                /*ConnectivityManager connMgr = (ConnectivityManager)
                         getSystemService(Context.CONNECTIVITY_SERVICE);
 
                 // Get details on the currently active default data network
@@ -84,12 +95,12 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<J
                     // Get a reference to the LoaderManager, in order to interact with loaders.
                     mNoNet.setVisibility(View.GONE);
                     System.out.println("htis makes it here");
-                    LoaderManager loaderManager = getLoaderManager();
+                    LoaderManager loaderManager1 = getLoaderManager();
 
                     // Initialize the loader. Pass in the int ID constant defined above and pass in null for
                     // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
                     // because this activity implements the LoaderCallbacks interface).
-                    loaderManager.initLoader(MAIN_LOADER_ID, null,  MainActivity.this);
+                    loaderManager1.initLoader(MAIN_LOADER_ID, null,  MainActivity.this);
                 } else {
                     // Otherwise, display error
                     // First, hide loading indicator so error message will be visible
@@ -101,11 +112,13 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<J
                     mEmptyStateTextView.setText(R.string.no_internet_connection);
                     // Update empty state with no connection error message
                 }
-                swipeRefreshLayout.setRefreshing(false);
+                swipeRefreshLayout.setRefreshing(false);*/
             }
         });
 
     }
+
+
 
 
     @Override
@@ -143,7 +156,6 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<J
 
     @Override
     public void onLoadFinished(android.content.Loader<Joke> loader, Joke joke) {
-        System.out.println(joke);
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
@@ -152,6 +164,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<J
             mEmptyStateTextView.setText(R.string.no_joke);
         }
 
+        TextView categorytitle = findViewById(R.id.categorytitle);
+        categorytitle.setText("CATEGORY:");
         //find the views, and load the stuff
         TextView category = findViewById(R.id.category);
 
@@ -159,61 +173,10 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<J
 
         TextView delivery = findViewById(R.id.delivery);
 
-        TextView nsfw = findViewById(R.id.nsfw);
-
-        TextView religious = findViewById(R.id.religious);
-
-        TextView political = findViewById(R.id.political);
-
-        TextView racist = findViewById(R.id.racist);
-
-        TextView sexist = findViewById(R.id.sexist);
-
-        TextView explicit = findViewById(R.id.explicit);
-
         category.setText(joke.getCategory());
         setup.setText(joke.getSetup());
         delivery.setText(joke.getDelivery());
 
-        //Color red = new Color(); // Color white
-
-        //Color green = new Color(255, 255, 255); // Color white
-        if (joke.isNsfw()){
-            nsfw.setTextColor(getResources().getColor(R.color.red));
-        }
-        else {
-            nsfw.setTextColor(getResources().getColor(R.color.green));
-        }
-        if (joke.isReligious()){
-            religious.setTextColor(getResources().getColor(R.color.red));
-        }
-        else {
-            religious.setTextColor(getResources().getColor(R.color.green));
-        }
-        if (joke.isPolitical()){
-            political.setTextColor(getResources().getColor(R.color.red));
-        }
-        else {
-            political.setTextColor(getResources().getColor(R.color.green));
-        }
-        if (joke.isRacist()){
-            racist.setTextColor(getResources().getColor(R.color.red));
-        }
-        else {
-            racist.setTextColor(getResources().getColor(R.color.green));
-        }
-        if (joke.isSexist()){
-            sexist.setTextColor(getResources().getColor(R.color.red));
-        }
-        else {
-            sexist.setTextColor(getResources().getColor(R.color.green));
-        }
-        if (joke.isExplicit()){
-            explicit.setTextColor(getResources().getColor(R.color.red));
-        }
-        else {
-            explicit.setTextColor(getResources().getColor(R.color.green));
-        }
     }
 
     @Override

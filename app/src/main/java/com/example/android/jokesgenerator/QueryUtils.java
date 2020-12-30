@@ -125,54 +125,11 @@ public final class QueryUtils {
             //Build a joke object from json
             JSONObject root = new JSONObject(jokeJSON);
 
-            String category = root.getString("category");
+            String category = root.getString("type");
             String setup = root.getString("setup");
-            String delivery = root.getString("delivery");
-            boolean nsfw;
-            boolean religious;
-            boolean political;
-            boolean racist;
-            boolean sexist;
-            boolean explicit;
+            String delivery = root.getString("punchline");
 
-            JSONObject flags = new JSONObject(root.getString("flags"));
-            if (flags.getString("nsfw").equals("false")){
-                nsfw = false;
-            }
-            else {
-                nsfw = true;
-            }
-            if (flags.getString("religious").equals("false")){
-                religious = false;
-            }
-            else {
-                religious = true;
-            }
-            if (flags.getString("political").equals("false")){
-                political = false;
-            }
-            else {
-                political = true;
-            }
-            if (flags.getString("racist").equals("false")){
-                racist = false;
-            }
-            else {
-                racist = true;
-            }
-            if (flags.getString("sexist").equals("false")){
-                sexist = false;
-            }
-            else {
-                sexist = true;
-            }
-            if (flags.getString("explicit").equals("false")){
-                explicit = false;
-            }
-            else {
-                explicit = true;
-            }
-            return new Joke(category, setup, delivery, nsfw, religious, political, racist, sexist, explicit);
+            return new Joke(category, setup, delivery);
         }
         catch (Exception e){
             // If an error is thrown when executing any of the above statements in the "try" block,
@@ -184,14 +141,7 @@ public final class QueryUtils {
         String category = "NoJokeAvailable";
         String setup = "Why couldn't the skeleton go to the Christmas party?";
         String delivery = "Because he had no body to go with!";
-        boolean nsfw = false;
-        boolean religious = false;
-        boolean political = false;
-        boolean racist = false;
-        boolean sexist = false;
-        boolean explicit = false;
         //return a default joke
-        return new Joke(category, setup, delivery, nsfw, religious, political, racist, sexist, explicit);
-
+        return new Joke(category, setup, delivery);
     }
 }
